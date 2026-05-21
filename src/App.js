@@ -45,13 +45,13 @@ const getLevelFromXP = (xp) => {
 const getXPForLevel = (lvl) => { let t = 0; for (let i = 0; i < lvl - 1; i++) t += XP_TABLE[i]; return t; };
 const uid = () => Math.random().toString(36).slice(2, 10);
 const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
-const hashPw = (pw) => btoa(encodeURIComponent(pw + "hq_salt_zak_2025"));
+// const hashPw = (pw) => btoa(encodeURIComponent(pw + "hq_salt_zak_2025"));
  
-const USERS_KEY = "hq_users_v2";
+// const USERS_KEY = "hq_users_v2";
 const SESSION_KEY = "hq_session_v2";
 const getUsers = () => { try { return JSON.parse(localStorage.getItem(USERS_KEY) || "{}"); } catch { return {}; } };
-const saveUsers = (u) => localStorage.setItem(USERS_KEY, JSON.stringify(u));
-const getSession = () => { try { return JSON.parse(localStorage.getItem(SESSION_KEY) || "null"); } catch { return null; } };
+// const saveUsers = (u) => localStorage.setItem(USERS_KEY, JSON.stringify(u));
+// const getSession = () => { try { return JSON.parse(localStorage.getItem(SESSION_KEY) || "null"); } catch { return null; } };
 const saveSession = (s) => localStorage.setItem(SESSION_KEY, JSON.stringify(s));
 const clearSession = () => localStorage.removeItem(SESSION_KEY);
  
@@ -748,7 +748,7 @@ export default function HabitQuest() {
       setTimeout(() => setLvlAnim(false), 3000);
     }
     prevLvl.current = lvl;
-  }, [profile && profile.totalXp]);
+}, [profile?.totalXp]);
  
   const push = useCallback((n) => {
     const id = uid();
